@@ -1,0 +1,4 @@
+baseURL = "http://ftchen.site/"
+languageCode = "en-us"
+title = "FtChen's Site"
+theme = "dream"

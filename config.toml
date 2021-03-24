@@ -2,3 +2,35 @@ baseURL = "http://ftchen.site/"
 languageCode = "en-us"
 title = "FtChen's Site"
 theme = "dream"
+
+defaultContentLanguage = "en"
+
+disqusShortname = "ftchen"
+
+[params]
+   # dark mode
+    defaultDark = false
+    backgroundDark = "black"
+    backgroundImageDark = "/me/background-dark.jpg"
+    darkLinkColor = "darkseagreen"
+    darkNav = true
+    dark404 = true
+
+    author = "FtChen"
+    # description = ""
+    # avatar = "/img/avatar.jpg"
+    # headerTitle = ""
+    # motto = "Motto"
+
+    email = "funtat.chen@gmail.com"
+  # twitter = ""
+    facebook = "https://www.facebook.com/FunTatChen/"
+    instagram = "https://www.instagram.com/ftchen/"
+  # mastodon = ""
+  # linkedin = ""
+  # github = ""
+  # stackoverflow = ""
+  # codepen = ""
+
+# search
+  enableSearch = true

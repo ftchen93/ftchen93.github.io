@@ -9,7 +9,7 @@ cover: /img/cover.jpg
 categories:
   - blog
 tags:
-draft: true
+draft: false
 ---
 
 Start a New Blog, again. This is my first post here.

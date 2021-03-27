@@ -1,4 +1,4 @@
-baseURL = "http://blog.ftchen.site/"
+baseURL = "https://blog.ftchen.site/"
 languageCode = "en-us"
 title = "FtChen's Site"
 theme = "dream"

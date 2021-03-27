@@ -5,7 +5,7 @@ lastmod: 2021-03-21T11:38:15+08:00
 author: FtChen
 # avatar: /img/author.jpg
 # authorlink: https://author.site
-cover: /img/cover.jpg
+cover: /img/github-mark.png
 categories:
   - blog
 tags:
@@ -57,11 +57,11 @@ Why not create another one to note down my learning journey?
 8. Again, follow if you wish to host your blog on Github
     ```
     git add .
-    it commit -m "my first commit"
+    git commit -m "my first commit"
     git remote add origin https://github.com/ftchen93/ftchen93.github.io.git
     git push origin master
     ```
 
-9. You're all set. After all those comand, you should able to view your blog on Github(or local). For example, my blog URL as follow
+9. You're all set. After all those command, you should able to view your blog on Github(or local). For example, my blog URL as follow
 
     ```https://ftchen93.github.io```

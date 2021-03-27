@@ -32,5 +32,8 @@ disqusShortname = "ftchen93-github-io"
   # stackoverflow = ""
   # codepen = ""
 
-# search
+  # search
   enableSearch = true
+
+   # options
+  showSummaryCoverInPost = true

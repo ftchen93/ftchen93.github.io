@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Start a New Blog, Again · FtChen</title>
+  <meta name="description" content="Why I started blogging again, and how to set up a Hugo blog on GitHub.">
+  <meta property="og:title" content="Start a New Blog, Again">
+  <meta property="og:description" content="Why I started blogging again, and how to set up a Hugo blog on GitHub.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="/assets/img/github-mark.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232f7d5b'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3EFT%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+  <script src="/assets/theme.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">FtChen<span>.</span></a>
+      <nav class="nav" aria-label="Main">
+        <a href="/#about" class="hide-sm">About</a>
+        <a href="/#writing">Writing</a>
+        <a href="/#contact">Contact</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article class="article">
+      <header class="article-head">
+        <div class="meta"><time datetime="2021-03-21">21 March 2021</time><span class="tag">#blog</span></div>
+        <h1>Start a New Blog, Again</h1>
+        <p class="lede">This is my first post here.</p>
+      </header>
+      <img class="article-cover" src="/assets/img/github-mark.png" alt="GitHub logo" width="1200" height="630">
+
+      <p>I decided to build a blog using <a href="https://gohugo.io">Hugo</a>, again.</p>
+      <p>Yes, a long time ago I built a blog, but I abandoned it and didn't update it for a very long time. Why not create another one to note down my learning journey?</p>
+
+      <ol>
+        <li>Install Hugo:
+          <pre><code>brew install hugo</code></pre></li>
+        <li>Check and verify the Hugo version:
+          <pre><code>hugo version</code></pre></li>
+        <li>Initialise a git repository (skip this if you don't intend to host your blog on GitHub):
+          <pre><code>git init</code></pre></li>
+        <li>Download a theme. I chose <a href="https://github.com/g1eny0ung/hugo-theme-dream">Dream</a>:
+          <pre><code>cd themes
+git clone https://github.com/g1eny0ung/hugo-theme-dream.git dream</code></pre></li>
+        <li>Alternatively, add the theme as a submodule (from the <a href="https://gohugo.io/getting-started/quick-start/">official docs</a>):
+          <pre><code>git submodule add https://github.com/g1eny0ung/hugo-theme-dream.git themes/dream</code></pre></li>
+        <li>Add some content. Creating my first post:
+          <pre><code>hugo new posts/my-first-post.md</code></pre></li>
+        <li>Start the Hugo server locally. It can be accessed at <code>localhost:xxxx</code>, where xxxx is the port number:
+          <pre><code>hugo server -D</code></pre></li>
+        <li>If you want to host your blog on GitHub, push it:
+          <pre><code>git add .
+git commit -m "my first commit"
+git remote add origin https://github.com/ftchen93/ftchen93.github.io.git
+git push origin master</code></pre></li>
+        <li>You're all set. After all those commands you should be able to view your blog on GitHub (or locally). For example, my blog URL is:
+          <pre><code>https://ftchen93.github.io</code></pre></li>
+      </ol>
+
+      <div class="callout"><p>Spoiler: I wasn't quite all set. See the <a href="/posts/my-first-post-cont.html">follow-up post</a> for the step I missed.</p></div>
+
+      <nav class="post-nav" aria-label="Post navigation">
+        <a href="/#writing"><span>Back to</span>All posts</a>
+        <a href="/posts/my-first-post-cont.html" style="text-align:right"><span>Next post</span>My First Post, Continued →</a>
+      </nav>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© <span id="year">2026</span> Fun Tat Chen</span>
+      <span><a href="https://github.com/ftchen93/ftchen93.github.io">Source on GitHub</a></span>
+    </div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

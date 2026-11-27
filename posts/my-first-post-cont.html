@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My First Post, Continued · FtChen</title>
+  <meta name="description" content="The missing step: deploying a Hugo blog to GitHub Pages with GitHub Actions.">
+  <meta property="og:title" content="My First Post, Continued">
+  <meta property="og:description" content="The missing step: deploying a Hugo blog to GitHub Pages with GitHub Actions.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="/assets/img/clouds.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232f7d5b'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3EFT%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+  <script src="/assets/theme.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">FtChen<span>.</span></a>
+      <nav class="nav" aria-label="Main">
+        <a href="/#about" class="hide-sm">About</a>
+        <a href="/#writing">Writing</a>
+        <a href="/#contact">Contact</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article class="article">
+      <header class="article-head">
+        <div class="meta"><time datetime="2021-03-27">27 March 2021</time><span class="tag">#blog</span></div>
+        <h1>My First Post, Continued</h1>
+        <p class="lede">Continuing from my last post…</p>
+      </header>
+      <img class="article-cover" src="/assets/img/clouds.jpg" alt="Pink clouds in a sunset sky" width="1600" height="1067">
+
+      <p>I was wrong in my last post. I thought my blog setup was complete, but it actually wasn't. I missed one more step: deploying to GitHub.</p>
+      <p>Although I had pushed my blog to GitHub, the page just wouldn't load. It kept showing me an Error 404 page, and I thought it was due to my custom domain settings.</p>
+      <p>Then I found out that I had to use a GitHub Action to get my blog up and running. Reference: <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">Hosting on GitHub</a>.</p>
+
+      <ol>
+        <li>First, create a file at <code>.github/workflows/gh-pages.yml</code> with the following content:
+<pre><code>name: github pages
+
+on:
+  push:
+    branches:
+      - main  # Set a branch to deploy
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+          # extended: true
+
+      - name: Build
+        run: hugo --minify
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public</code></pre>
+          <p style="margin-top:1em">There is also documentation for a <a href="https://github.com/marketplace/actions/hugo-setup">more advanced setup</a>.</p>
+        </li>
+      </ol>
+
+      <div class="callout"><p><strong>Note:</strong> the workflow above is from 2021. The action versions and the <code>ubuntu-18.04</code> runner are now outdated, so check the current Hugo docs before copying it.</p></div>
+
+      <nav class="post-nav" aria-label="Post navigation">
+        <a href="/posts/my-first-post.html"><span>Previous post</span>← Start a New Blog, Again</a>
+        <a href="/#writing" style="text-align:right"><span>Back to</span>All posts</a>
+      </nav>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© <span id="year">2026</span> Fun Tat Chen</span>
+      <span><a href="https://github.com/ftchen93/ftchen93.github.io">Source on GitHub</a></span>
+    </div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
